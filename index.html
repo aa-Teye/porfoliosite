@@ -87,48 +87,124 @@
                 <div class="grid">
                     <div class="card project-card">
                         <div class="project-header">
-                            <i class="fas fa-server card-icon"></i>
+                            <i class="fas fa-ticket-alt card-icon"></i>
                             <div class="project-links">
-                                <a href="https://github.com/aa-Teye" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/aa-Teye/VelocityPass" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-                        <h3>Scalable E-Commerce API</h3>
-                        <p>A high-performance RESTful API built with FastAPI and PostgreSQL, featuring secure JWT authentication, asynchronous database operations, and comprehensive API documentation.</p>
+                        <h3>VelocityPass: Event Ticketing Engine</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Engineered a high-throughput API using FastAPI and Redis distributed locks to eliminate race conditions during 10k+ concurrent user traffic spikes.</li>
+                            <li>Implemented PostgreSQL row-level locking (SELECT FOR UPDATE) and Unit of Work patterns to guarantee atomic transactions.</li>
+                            <li>Deployed horizontally scalable services using Docker Compose and multi-stage, non-root Dockerfiles.</li>
+                        </ul>
+                        <div class="skills-flex project-tags">
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <div class="project-header">
+                            <i class="fas fa-wallet card-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/aa-Teye/UG-SmartWallet" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>UG SmartWallet: Closed-Loop Campus Economy</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Engineered a robust double-entry ledger system using PostgreSQL row-level locking, ensuring zero money creation/loss during concurrent transactions.</li>
+                            <li>Implemented strict idempotency key validation, eliminating double-spending risks from network retries and duplicate QR scans.</li>
+                            <li>Utilized Pydantic v2 to enforce rigorous pre-database validation, preventing malformed financial data.</li>
+                        </ul>
                         <div class="skills-flex project-tags">
                             <span class="skill-tag">FastAPI</span>
                             <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">JWT</span>
+                            <span class="skill-tag">Pydantic v2</span>
                         </div>
                     </div>
+
                     <div class="card project-card">
                         <div class="project-header">
-                            <i class="fas fa-database card-icon"></i>
+                            <i class="fas fa-play-circle card-icon"></i>
                             <div class="project-links">
-                                <a href="https://github.com/aa-Teye" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/aa-Teye/Dominion-Media" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-                        <h3>Real-time Data Processing Pipeline</h3>
-                        <p>Python-based data pipeline that ingests, cleans, and processes streaming data into a SQLite database. Utilizes background tasks to ensure high availability and fast response times.</p>
+                        <h3>Dominion Media API: Audio Streaming Backend</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Deployed memory-efficient audio streaming using Python Async Generators and FastAPI StreamingResponse, drastically reducing server footprint.</li>
+                            <li>Offloaded heavy bandwidth operations to AWS S3 and CloudFront using secure Presigned URLs, protecting the core API.</li>
+                            <li>Built a decoupled media architecture capable of handling thousands of concurrent listeners without exhausting worker threads.</li>
+                        </ul>
                         <div class="skills-flex project-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQLite</span>
-                            <span class="skill-tag">Data Eng</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">AWS S3</span>
+                            <span class="skill-tag">CloudFront</span>
                         </div>
                     </div>
+
                     <div class="card project-card">
                         <div class="project-header">
-                            <i class="fas fa-broadcast-tower card-icon"></i>
+                            <i class="fas fa-chart-line card-icon"></i>
                             <div class="project-links">
-                                <a href="https://github.com/aa-Teye" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/aa-Teye/QuantData-Pipeline" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-                        <h3>Media Automation Script</h3>
-                        <p>Custom Python scripting tool designed to automate live broadcast operations in vMix, reducing manual switching errors and streamlining digital production workflows.</p>
+                        <h3>QuantData Pipeline: Financial Data API</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Architected an async bulk-insert pipeline to TimescaleDB, efficiently processing thousands of financial market ticks per second.</li>
+                            <li>Implemented strict, Rust-backed Pydantic v2 validation models to ensure zero corrupted or illogical data points enter the pipeline.</li>
+                            <li>Leveraged PostgreSQL with TimescaleDB hypertables, massively improving query performance for temporal aggregations.</li>
+                        </ul>
                         <div class="skills-flex project-tags">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">vMix API</span>
-                            <span class="skill-tag">Automation</span>
+                            <span class="skill-tag">TimescaleDB</span>
+                            <span class="skill-tag">Pydantic v2</span>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <div class="project-header">
+                            <i class="fas fa-stethoscope card-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/aa-Teye/Symptom-Checker" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>Symptom Checker Microservice: AI-Wrapper</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Decoupled heavy AI inference from the main API using Celery and RabbitMQ, preventing connection pool exhaustion and Gateway Timeouts.</li>
+                            <li>Implemented a robust worker queue system with automatic retries and state management via Redis, allowing independent horizontal scaling.</li>
+                            <li>Designed a non-blocking API that handles burst traffic gracefully by queueing requests, ensuring 99.9% uptime.</li>
+                        </ul>
+                        <div class="skills-flex project-tags">
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Celery</span>
+                            <span class="skill-tag">RabbitMQ</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <div class="project-header">
+                            <i class="fas fa-shield-alt card-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/aa-Teye/Fraud-Detection" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>Fraud Detection: Real-Time Pipeline</h3>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Architected a low-latency fraud detection pipeline using Kafka streams to process transaction events in under 50ms.</li>
+                            <li>Implemented an in-memory Redis caching layer for rapid feature retrieval, minimizing database round-trips.</li>
+                            <li>Deployed an asynchronous FastAPI microservice to expose model predictions without blocking event processing.</li>
+                        </ul>
+                        <div class="skills-flex project-tags">
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Kafka</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">ML</span>
                         </div>
                     </div>
                 </div>

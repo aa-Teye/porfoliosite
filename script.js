@@ -57,25 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.size = Math.random() * 3 + 1; // 1px to 4px
-            this.speedX = Math.random() * 0.5 - 0.25;
-            this.speedY = Math.random() * 0.5 - 0.25;
-            
-            // Antigravity colors: blue, light grey, white with opacity
-            const colors = [
-                'rgba(26, 115, 232, 0.3)', // Google Blue
-                'rgba(66, 133, 244, 0.2)', // Light Blue
-                'rgba(0, 0, 0, 0.05)',     // Subtle Dark
-                'rgba(95, 99, 104, 0.1)'   // Grey
-            ];
-            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 0.4 - 0.2;
+            this.speedY = Math.random() * 0.4 - 0.2;
+            this.color = 'rgba(77, 144, 254, 0.4)';
         }
 
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Wrap around screen
             if (this.x > width) this.x = 0;
             else if (this.x < 0) this.x = width;
             
@@ -93,8 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initParticles() {
         particles = [];
-        // Number of particles depends on screen size
-        const numParticles = Math.min(Math.floor((width * height) / 15000), 100);
+        const numParticles = Math.min(Math.floor((width * height) / 10000), 120);
         for (let i = 0; i < numParticles; i++) {
             particles.push(new Particle());
         }
@@ -103,10 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParticles() {
         ctx.clearRect(0, 0, width, height);
         
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            
+            // Draw connecting lines
+            for (let j = i; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 120) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(77, 144, 254, ${0.15 - distance/800})`;
+                    ctx.lineWidth = 1;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
         
         requestAnimationFrame(animateParticles);
     }
