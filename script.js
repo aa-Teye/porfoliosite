@@ -27,15 +27,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 
     // Navbar Scroll Effect
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
     window.addEventListener('scroll', () => {
+        // Darken navbar on scroll
         if (window.scrollY > 50) {
-            navbar.style.boxShadow = 'var(--shadow-sm)';
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.boxShadow = 'none';
-            navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+            navbar.classList.remove('scrolled');
         }
+
+        // Back to top visibility
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+
+        // Active nav link based on current section
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Back to Top click
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinksContainer = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinksContainer.classList.toggle('open');
+    });
+
+    // Close mobile menu on nav link click
+    navLinksContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            navLinksContainer.classList.remove('open');
+        });
     });
 
     // Background Particle Animation (Antigravity Theme)
