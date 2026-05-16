@@ -536,7 +536,55 @@ footer {
     font-size: 0.8rem;
 }
 
-/* Featured Project Card */\n.project-card--featured {\n    border-color: rgba(77, 144, 254, 0.4);\n    background: linear-gradient(135deg, rgba(26, 115, 232, 0.08), rgba(20, 20, 22, 0.6));\n    position: relative;\n    overflow: hidden;\n}\n\n.project-card--featured::before {\n    content: '';\n    position: absolute;\n    inset: 0;\n    border-radius: 16px;\n    padding: 1px;\n    background: linear-gradient(135deg, rgba(77, 144, 254, 0.5), transparent 60%);\n    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n    -webkit-mask-composite: xor;\n    mask-composite: exclude;\n    pointer-events: none;\n}\n\n.project-card--featured:hover {\n    border-color: rgba(77, 144, 254, 0.7);\n    box-shadow: 0 16px 48px rgba(77, 144, 254, 0.2);\n}\n\n/* WIP Badge */\n.badge--wip {\n    display: inline-flex;\n    align-items: center;\n    gap: 0.35rem;\n    padding: 0.3rem 0.85rem;\n    background: rgba(77, 144, 254, 0.15);\n    color: var(--accent-blue);\n    border: 1px solid rgba(77, 144, 254, 0.35);\n    border-radius: 999px;\n    font-size: 0.78rem;\n    font-weight: 600;\n    letter-spacing: 0.3px;\n    animation: pulse-badge 2.5s ease-in-out infinite;\n}\n\n@keyframes pulse-badge {\n    0%, 100% { box-shadow: 0 0 0 0 rgba(77, 144, 254, 0.3); }\n    50% { box-shadow: 0 0 0 6px rgba(77, 144, 254, 0); }\n}\n\n/* Scroll Reveal Animations */
+/* Featured Project Card */
+
+.project-card--featured {
+    border-color: rgba(77, 144, 254, 0.4);
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.08), rgba(20, 20, 22, 0.6));
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card--featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(77, 144, 254, 0.5), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.project-card--featured:hover {
+    border-color: rgba(77, 144, 254, 0.7);
+    box-shadow: 0 16px 48px rgba(77, 144, 254, 0.2);
+}
+
+/* WIP Badge */
+.badge--wip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.85rem;
+    background: rgba(77, 144, 254, 0.15);
+    color: var(--accent-blue);
+    border: 1px solid rgba(77, 144, 254, 0.35);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    animation: pulse-badge 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(77, 144, 254, 0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(77, 144, 254, 0); }
+}
+
+/* Scroll Reveal Animations */
 .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
