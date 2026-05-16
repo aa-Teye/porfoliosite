@@ -17,12 +17,19 @@
 <body>
     <canvas id="particleCanvas"></canvas>
 
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Awonders</a>
-            <div class="nav-links">
-                <a href="mailto:alexteyeametepey@gmail.com" class="btn-primary">Contact Me</a>
+            <a href="#" class="logo"><span class="logo-bracket">&lt;</span>ATA<span
+                    class="logo-bracket">/&gt;</span></a>
+            <div class="nav-links" id="nav-links">
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#tech-stack" class="nav-link">Stack</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="mailto:alexteyeametepey@gmail.com" class="btn-primary nav-cta">Contact Me</a>
             </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -46,6 +53,7 @@
                     aren't just stable, they are built to scale.
                 </p>
                 <div class="hero-actions">
+                    <a href="#projects" class="btn-primary hero-cta">View My Work <i class="fas fa-arrow-right"></i></a>
                     <a href="#tech-stack" class="btn-secondary">Explore My Stack <i class="fas fa-arrow-down"></i></a>
                     <div class="social-links">
                         <a href="https://github.com/aa-Teye" target="_blank" aria-label="GitHub"><i
@@ -150,16 +158,18 @@
                         <div class="project-header">
                             <i class="fas fa-hospital card-icon"></i>
                             <div class="project-links">
-                                <a href="#" target="_blank"
-                                    aria-label="View Code"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <h3>Hospital Management System</h3>
                         <ul
                             style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
-                            <li>Architected a comprehensive system to digitize patient records, scheduling, and hospital administration workflows.</li>
-                            <li>Implemented secure role-based access control (RBAC) for doctors, nurses, administrators, and patients ensuring data privacy.</li>
-                            <li>Designed an optimized relational database schema to handle large volumes of medical data with high availability.</li>
+                            <li>Architected a comprehensive system to digitize patient records, scheduling, and hospital
+                                administration workflows.</li>
+                            <li>Implemented secure role-based access control (RBAC) for doctors, nurses, administrators,
+                                and patients ensuring data privacy.</li>
+                            <li>Designed an optimized relational database schema to handle large volumes of medical data
+                                with high availability.</li>
                         </ul>
                         <div class="skills-flex project-tags">
                             <span class="skill-tag">Python</span>
@@ -173,16 +183,18 @@
                         <div class="project-header">
                             <i class="fas fa-school card-icon"></i>
                             <div class="project-links">
-                                <a href="#" target="_blank"
-                                    aria-label="View Code"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <h3>School Management System</h3>
                         <ul
                             style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
-                            <li>Developed a robust platform for student enrollment, grading, attendance tracking, and faculty management.</li>
-                            <li>Built a responsive frontend for parents and teachers to access real-time academic performance and announcements.</li>
-                            <li>Integrated automated report generation and notification pipelines to streamline administrative tasks.</li>
+                            <li>Developed a robust platform for student enrollment, grading, attendance tracking, and
+                                faculty management.</li>
+                            <li>Built a responsive frontend for parents and teachers to access real-time academic
+                                performance and announcements.</li>
+                            <li>Integrated automated report generation and notification pipelines to streamline
+                                administrative tasks.</li>
                         </ul>
                         <div class="skills-flex project-tags">
                             <span class="skill-tag">Python</span>
@@ -505,6 +517,11 @@
             </div>
         </section>
     </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <footer>
         <div class="footer-container">
