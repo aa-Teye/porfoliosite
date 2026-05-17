@@ -176,16 +176,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.getElementById('chat-send');
     const chatMessages = document.getElementById('chat-messages');
 
-    const wisdomQuotes = [
-        "Proverbs 3:5-6: Trust in the Lord with all your heart, and do not lean on your own understanding.",
-        "Philippians 4:13: I can do all things through him who strengthens me.",
-        "Jeremiah 29:11: For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.",
-        "Romans 8:28: And we know that for those who love God all things work together for good.",
-        "Life is 10% what happens to you and 90% how you react to it.",
-        "The best time to plant a tree was 20 years ago. The second best time is now.",
-        "Isaiah 40:31: But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles.",
-        "Psalm 23:1: The Lord is my shepherd; I shall not want."
-    ];
+    function getBotResponse(input) {
+        if (typeof botKnowledge === 'undefined') {
+            return "I'm having trouble connecting to my reference engine right now!";
+        }
+
+        const text = input.toLowerCase();
+        const inputWords = text.split(/[\s,?.!]+/).filter(w => w.length > 0);
+
+        // 1. Check knowledge base topics first
+        let bestMatch = null;
+        let maxMatches = 0;
+
+        for (const topic of botKnowledge.topics) {
+            let matchCount = 0;
+            
+            for (const keyword of topic.keywords) {
+                if (keyword.includes(' ')) {
+                    // For multi-word keywords (like "cpg collect"), check full text
+                    if (text.includes(keyword)) matchCount += 2;
+                } else {
+                    // For single words, check if any word matches or starts with the keyword 
+                    // (this handles plurals like "skill" -> "skills" without substring bugs)
+                    if (inputWords.some(word => word === keyword || word.startsWith(keyword))) {
+                        matchCount++;
+                    }
+                }
+            }
+            if (matchCount > maxMatches) {
+                maxMatches = matchCount;
+                bestMatch = topic.response;
+            }
+        }
+
+        // If we found a topic match, return it
+        if (bestMatch) return bestMatch;
+
+        // 2. Check greetings ONLY if no topic was matched
+        // We use inputWords.includes to avoid matching "his" as "hi"
+        if (botKnowledge.greetings.some(g => inputWords.includes(g))) {
+            return botKnowledge.greetings_response;
+        }
+
+        // 3. Return default fallback
+        return botKnowledge.default_response;
+    }
 
     if (chatbotToggle) {
         chatbotToggle.addEventListener('click', () => {
@@ -203,7 +238,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message');
             msgDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-            msgDiv.textContent = text;
+            
+            // Format links if present
+            if (!isUser && text.includes('http')) {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                msgDiv.innerHTML = text.replace(urlRegex, '<a href="$1" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">$1</a>');
+            } else {
+                msgDiv.textContent = text;
+            }
+            
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -216,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Bot reply
                 setTimeout(() => {
-                    const randomQuote = wisdomQuotes[Math.floor(Math.random() * wisdomQuotes.length)];
-                    appendMessage(randomQuote);
+                    const response = getBotResponse(text);
+                    appendMessage(response);
                 }, 600);
             }
         }
