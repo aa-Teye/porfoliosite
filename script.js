@@ -167,4 +167,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initParticles();
     animateParticles();
+
+    // Chatbot Logic
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotBody = document.getElementById('chatbot-body');
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    const wisdomQuotes = [
+        "Proverbs 3:5-6: Trust in the Lord with all your heart, and do not lean on your own understanding.",
+        "Philippians 4:13: I can do all things through him who strengthens me.",
+        "Jeremiah 29:11: For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.",
+        "Romans 8:28: And we know that for those who love God all things work together for good.",
+        "Life is 10% what happens to you and 90% how you react to it.",
+        "The best time to plant a tree was 20 years ago. The second best time is now.",
+        "Isaiah 40:31: But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles.",
+        "Psalm 23:1: The Lord is my shepherd; I shall not want."
+    ];
+
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener('click', () => {
+            chatbotBody.classList.toggle('open');
+            if (chatbotBody.classList.contains('open')) {
+                chatbotIcon.classList.remove('fa-chevron-up');
+                chatbotIcon.classList.add('fa-chevron-down');
+            } else {
+                chatbotIcon.classList.remove('fa-chevron-down');
+                chatbotIcon.classList.add('fa-chevron-up');
+            }
+        });
+
+        function appendMessage(text, isUser = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message');
+            msgDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleChat() {
+            const text = chatInput.value.trim();
+            if (text) {
+                appendMessage(text, true);
+                chatInput.value = '';
+                
+                // Bot reply
+                setTimeout(() => {
+                    const randomQuote = wisdomQuotes[Math.floor(Math.random() * wisdomQuotes.length)];
+                    appendMessage(randomQuote);
+                }, 600);
+            }
+        }
+
+        chatSend.addEventListener('click', handleChat);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleChat();
+        });
+    }
 });

@@ -55,6 +55,7 @@
                 <div class="hero-actions">
                     <a href="#projects" class="btn-primary hero-cta">View My Work <i class="fas fa-arrow-right"></i></a>
                     <a href="#tech-stack" class="btn-secondary">Explore My Stack <i class="fas fa-arrow-down"></i></a>
+                    <a href="Alex_Ametepey_CV.pdf" download class="btn-secondary">Download CV <i class="fas fa-download"></i></a>
                     <div class="social-links">
                         <a href="https://github.com/aa-Teye" target="_blank" aria-label="GitHub"><i
                                 class="fab fa-github"></i></a>
@@ -177,6 +178,28 @@
                             <span class="skill-tag">PostgreSQL</span>
                             <span class="skill-tag">React Native</span>
                             <span class="skill-tag">Offline-First</span>
+                        </div>
+                    </div>
+
+                    <!-- VS Code Sound Extension -->
+                    <div class="card project-card">
+                        <div class="project-header">
+                            <i class="fas fa-code card-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>AudioAlert: VS Code Extension</h3>
+                        <ul
+                            style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
+                            <li>Developed a VS Code extension that plays an alert sound whenever a syntax error or exception is detected in the editor.</li>
+                            <li>Allows users to upload custom audio files or select from native system sounds for personalized error notifications.</li>
+                            <li>Built using TypeScript and the VS Code Extension API to hook into diagnostic and language server events in real-time.</li>
+                        </ul>
+                        <div class="skills-flex project-tags">
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">VS Code API</span>
+                            <span class="skill-tag">Node.js</span>
                         </div>
                     </div>
 
@@ -382,10 +405,11 @@
                         </div>
                     </div>
 
-                    <div class="card project-card">
+                    <div class="card project-card project-card--featured">
                         <div class="project-header">
                             <i class="fas fa-heartbeat card-icon"></i>
                             <div class="project-links">
+                                <span class="badge badge--wip">⚡ In Progress</span>
                                 <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -513,15 +537,16 @@
                         <h3>ONC Media Automation Hub</h3>
                         <ul
                             style="font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.5;">
-                            <li>Developed a customized <strong>Flutter</strong> application to serve as a remote control
+                            <li>Developed a customized <strong>React Native</strong> application to serve as a remote control
                                 for complex live media broadcasts.</li>
-                            <li>Integrated directly with the vMix API via WebSockets for real-time, low-latency
+                            <li>Architected a <strong>FastAPI</strong> backend integrated directly with the vMix API via WebSockets for real-time, low-latency
                                 switching and graphics rendering.</li>
                             <li>Empowered media teams with a seamless, 60fps mobile interface to manage global
                                 livestreams from any device.</li>
                         </ul>
                         <div class="skills-flex project-tags">
-                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">FastAPI</span>
                             <span class="skill-tag">WebSockets</span>
                             <span class="skill-tag">vMix API</span>
                         </div>
@@ -543,6 +568,23 @@
             </div>
         </section>
     </main>
+
+    <!-- Scripture Chatbot -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header" id="chatbot-toggle">
+            <span><i class="fas fa-robot"></i> Wisdom Bot</span>
+            <i class="fas fa-chevron-up" id="chatbot-icon"></i>
+        </div>
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">Hello! I'm Wisdom Bot. Ask me for a scripture or some life advice!</div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type a message...">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">

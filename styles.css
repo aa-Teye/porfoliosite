@@ -596,6 +596,111 @@ footer {
     transform: translateY(0);
 }
 
+/* Chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 320px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: all var(--transition-fast);
+    font-size: 0.95rem;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #1a73e8, #4285f4);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.chatbot-body {
+    display: none;
+    flex-direction: column;
+    height: 350px;
+}
+
+.chatbot-body.open {
+    display: flex;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.message {
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    max-width: 85%;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.user-message {
+    background: rgba(77, 144, 254, 0.2);
+    color: var(--text-primary);
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 0.8rem;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    outline: none;
+    font-family: inherit;
+}
+
+#chat-input::placeholder {
+    color: var(--text-secondary);
+}
+
+#chat-send {
+    background: none;
+    border: none;
+    color: var(--accent-blue);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    transition: color var(--transition-fast);
+}
+
+#chat-send:hover {
+    color: var(--text-primary);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hamburger {
